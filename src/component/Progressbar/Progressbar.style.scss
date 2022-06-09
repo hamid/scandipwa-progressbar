@@ -1,0 +1,154 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+:root {
+    
+    --progressbar-color: var(--primary-base-color);
+    --progressbar-second-color: var(--secondary-base-color);
+    --progressbar-second-dark-color: var(--secondary-dark-color);
+    --progressbar-number-box-width: 40px;
+    --progressbar-animation-duration: 2s;
+}
+
+.step-wrapper{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+
+    .step{
+        color: var(--primary-base-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+        .step-info{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 20px 5px;
+
+            
+            .number-box{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                background-color: var(--progressbar-second-color);
+                color: var(--progressbar-second-dark-color);
+                width: var(--progressbar-number-box-width);
+                height: var(--progressbar-number-box-width);
+                border-radius: calc(var(--progressbar-number-box-width)/2);
+                text-align: center;
+                font-weight: 400;
+                font-size: 1.4rem;
+            }
+            .step-label{
+                color: var(--progressbar-second-dark-color);
+                text-transform: none;
+                font-weight: 400;
+                font-size: 1.6rem;
+                margin: 7px;
+            }
+            
+        }
+
+        &.done{
+            .number-box {
+                    background-color: var(--primary-base-color);
+                    color: var(--progressbar-second-color);
+                }
+            
+                .step-label {
+                    color :#363636;
+                }
+        }
+        &.active {
+            .number-box {
+                animation-name: stepAnimation;
+                animation-duration: calc(var(--progressbar-animation-duration)*2);
+                animation-delay: 0s;
+                background-color: var(--primary-base-color);
+                color: var(--progressbar-second-color);
+            }
+            .step-label {
+                transition: all ease 250ms;
+                color: #363636;
+                font-weight: 800;
+            }
+        }
+        
+    }
+
+        .bar {
+            height: 5px;
+            margin-bottom: calc(var(--progressbar-number-box-width)*4/5);
+            border-radius: 5px;
+            background-color: var(--progressbar-second-color);
+            position: relative;
+            overflow: hidden;
+            &.filled{
+                background-color: var(--primary-base-color);
+            }
+            .active-bar{
+                position:absolute;
+                left: 0px;
+                height: 100%;
+                background-color: var(--primary-base-color);
+                animation-name: barAnimation;
+                animation-duration: var(--progressbar-animation-duration);
+                z-index: 10;
+                width: 100%;
+            }
+
+        }
+
+        @keyframes barAnimation {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%
+            }
+        }
+        @keyframes stepAnimation {
+            0% {
+                color: var(--progressbar-second-dark-color);
+                background-color: var(--progressbar-second-color);
+            }
+            50% {
+                background-color: var(--progressbar-second-color);
+                box-shadow: 0px 0px 0px var(--primary-base-color);
+            }
+
+            75%{
+                box-shadow: 0px 0px 20px var(--primary-base-color);
+            }
+
+            to {
+                background-color: var(--primary-base-color);
+                color: var(--progressbar-second-color);
+                box-shadow: 0px 0px 0px var(--primary-base-color);
+            }
+        }
+}
+
+@media (max-width: 810px){
+    .step-wrapper .step .step-info{
+        margin: 0px;
+    }
+}
