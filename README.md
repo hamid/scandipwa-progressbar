@@ -1,3 +1,12 @@
+## ProgressBar
+- As reusable components
+- ![gif-1](https://user-images.githubusercontent.com/1645233/172895480-ed302f61-94aa-4652-801b-544f6cf5e158.gif)
+---
+- As checkout components
+- ![gif-2](https://user-images.githubusercontent.com/1645233/172895929-7dac9ec0-a56b-43ee-9247-9d0812e53a1f.gif)
+
+
+
 # Getting Started with Create ScandiPWA App
 
 This package contains new ScandiPWA theme sources. Your parent theme is `@scandipwa/scandipwa`.
